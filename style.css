@@ -1,0 +1,222 @@
+body {
+  background-color: #050505;
+  color: #e0e0e0;
+  background-image: linear-gradient(rgba(0, 255, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 0, 0.03) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #111;
+}
+::-webkit-scrollbar-thumb {
+  background: #39ff14;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #32cd32;
+}
+
+/* Glitch Effect Class */
+.glitch {
+  position: relative;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0a0a0a;
+}
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #ff00c1;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+.glitch::after {
+  left: -2px;
+  text-shadow: -1px 0 #00fff9;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+  0% {
+    clip: rect(30px, 9999px, 10px, 0);
+  }
+  20% {
+    clip: rect(80px, 9999px, 90px, 0);
+  }
+  40% {
+    clip: rect(10px, 9999px, 50px, 0);
+  }
+  60% {
+    clip: rect(60px, 9999px, 20px, 0);
+  }
+  80% {
+    clip: rect(30px, 9999px, 60px, 0);
+  }
+  100% {
+    clip: rect(50px, 9999px, 80px, 0);
+  }
+}
+@keyframes glitch-anim2 {
+  0% {
+    clip: rect(10px, 9999px, 30px, 0);
+  }
+  20% {
+    clip: rect(50px, 9999px, 10px, 0);
+  }
+  40% {
+    clip: rect(20px, 9999px, 90px, 0);
+  }
+  60% {
+    clip: rect(90px, 9999px, 10px, 0);
+  }
+  80% {
+    clip: rect(10px, 9999px, 50px, 0);
+  }
+  100% {
+    clip: rect(60px, 9999px, 30px, 0);
+  }
+}
+
+/* CRT Screen Scanline effect */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1)
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 50;
+}
+
+.dyn-img-link-wrapper-di-script {
+  anchor-scope: all;
+  display: contents;
+  position: relative;
+  z-index: 1;
+}
+
+.dyn-img-link-wrapper-di-script img {
+  anchor-name: --photo;
+  display: block;
+  max-width: 100%;
+}
+
+.dyn-img-link-di-script {
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: white;
+  height: clamp(
+    13px,
+    calc(max(anchor-size(width), anchor-size(height)) * 0.3),
+    21px
+  );
+  width: clamp(
+    13px,
+    calc(max(anchor-size(width), anchor-size(height)) * 0.3),
+    21px
+  );
+  padding: 4px;
+  position: absolute;
+
+  bottom: anchor(bottom);
+  left: anchor(left);
+  margin-left: 10px;
+  margin-bottom: 10px;
+
+  transition: background-color 0.2s ease-in-out;
+}
+
+.dyn-img-link-di-script:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dyn-img-link-di-script span {
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.dyn-img-attribution-button-di-script {
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: white;
+  width: clamp(
+    13px,
+    calc(max(anchor-size(width), anchor-size(height)) * 0.3),
+    21px
+  );
+  height: clamp(
+    13px,
+    calc(max(anchor-size(width), anchor-size(height)) * 0.3),
+    21px
+  );
+  padding: 4px;
+
+  position: absolute;
+  position-anchor: --photo;
+  top: anchor(top);
+  right: anchor(right);
+  margin-top: 10px;
+  margin-right: 10px;
+
+  transition: background-color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dyn-img-attribution-button-di-script:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dyn-img-attribution-button-di-script span {
+  font-size: 14px;
+  vertical-align: top;
+}
+
+.dyn-img-inline-attribution-di-script {
+  z-index: 999999;
+  font-size: 12px;
+  padding: 4px;
+  display: none;
+
+  position: absolute;
+  position-anchor: --photo;
+  bottom: anchor(bottom);
+  right: anchor(right);
+  margin-bottom: 8px;
+  margin-right: 8px;
+
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: right;
+
+  white-space: nowrap;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  color: white;
+}
